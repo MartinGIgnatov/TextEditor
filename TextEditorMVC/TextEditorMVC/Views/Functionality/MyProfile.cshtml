@@ -1,0 +1,118 @@
+﻿@using System.Security.Claims;
+
+@model TextEditorMVC.Models.UserToView
+@{
+    ViewData["Title"] = "MyProfile";
+
+}
+@*<div class="panel panel-default" id="profile">
+        <h2>MyProfile</h2>
+        <div class="panel-footer">Username: <li> @this.Model.Username</li></div>
+        <div class="panel-footer">Name:<li> @this.Model.Name</li></div>
+        <div class="panel-footer">Email: <li> @this.Model.Email</li></div>
+        <div class="panel-footer">CreationDate: <li> @this.Model.CreationDate</li></div>
+
+    </div>*@
+<div id="MyProfilePage" onload="changeBackground()">
+    <div class="panel-group" id="Profile">
+        <div class="panel panel-default">
+            <div id="titl" class="panel-body"><h2><font size="8">MyProfile</h2></font></div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <font size="5">
+                        Username:
+                        <div class="panel-footer">
+
+                            @this.Model.Username
+                            <a id="b" type="button" class="btn btn-warning" asp-area="" asp-controller="Functionality" asp-action="ChangeUsernameForm">Change</a>
+                            @*<button id="b" type="button" class="btn btn-warning">Change</button>*@
+
+                        </div>
+                    </font>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <font size="5">
+                        Password:
+                        <div class="panel-footer">
+
+                            ........
+                            <a id="b" type="button" class="btn btn-warning" asp-area="" asp-controller="Functionality" asp-action="ChangePasswordForm">Change</a>
+
+                        </div>
+                    </font>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <font size="5">
+                        Name:
+                        <div class="panel-footer">
+                            @if (Model.Name == null)
+                            {
+                                <div>
+                                    <font color="lightgrey">Not given</font>
+                                    <a id="b" type="button" class="btn btn-warning" asp-area="" asp-controller="Functionality" asp-action="ChangeNameForm">Change</a>
+                                    @*<button id="b" type="button">Change</button>*@
+                                </div>
+                            }
+                            else
+                            {
+                                <div>
+                                    @this.Model.Name
+                                    <a id="b" type="button" class="btn btn-warning" asp-area="" asp-controller="Functionality" asp-action="ChangeNameForm">Change</a>
+                                    @*<button id="b" type="button">Change</button>*@
+                                </div>
+                            }
+                    </font>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <font size="5">
+                        Email:
+                        <div class="panel-footer">
+                            <div>
+                                @this.Model.Email
+                                <a id="b" type="button" class="btn btn-warning" asp-area="" asp-controller="Functionality" asp-action="ChangeEmailForm">Change</a>
+                            </div>
+                        </div>
+                    </font>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <font size="5">
+                            CreationDate:
+                            <div class="panel-footer">
+                                <div>
+                                    @this.Model.CreationDate
+                                </div>
+                            </div>
+                        </font>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    @*<ul>
+            <li>
+                @this.Model.Username
+            </li>
+            <li>
+                @this.Model.Name
+            </li>
+            <li>
+                @this.Model.CreationDate
+            </li>
+            <li>
+                @this.Model.Email
+            </li>
+        </ul>*@
+
+
+
+    <script src="~/js/myProfile.js">
+
+    </script>

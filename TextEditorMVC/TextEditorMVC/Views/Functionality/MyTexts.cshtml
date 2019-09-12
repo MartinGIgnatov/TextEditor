@@ -1,0 +1,51 @@
+﻿@model TextEditorMVC.Models.TextsForView
+@{
+    ViewData["Title"] = "MyTexts";
+}
+
+
+<div class="textPanel">
+    <a asp-area="" asp-controller="Functionality" asp-action="EditText" style="text-decoration: none !important;">
+        <div>
+            <button id="Newb" type="button">New</button>
+        </div>
+    </a>
+</div>
+
+@if (Model != null && Model.Texts != null)
+{
+    @for (int i = 0; i < Model.Texts.Count; i++)
+    {
+        <div class="textPanel">
+
+            <a asp-area="" asp-controller="Functionality" asp-action="EditText" asp-route-id="@Model.Texts[i].Id" asp-route-title=@Model.Texts[i].Title asp-route-text=@Model.Texts[i].Text style="text-decoration: none !important;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="text-align:center; color:black; ">@Model.Texts[i].Title</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" style="color:black;">
+                                <span>
+                                    @Model.Texts[i].Text
+                                </span>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </a>
+            <div id="buttonGroupId" class="btn-group col-9" role="group" aria-label="Basic example">
+                <a id="btt" type="button" class="btn btn-success col-3" a asp-area="" asp-controller="Functionality" asp-action="EditText" asp-route-id="@Model.Texts[i].Id" asp-route-title=@Model.Texts[i].Title asp-route-text=@Model.Texts[i].Text>Edit</a>
+                <a id="btt" type="button" class="btn btn-warning col-3" a asp-area="" asp-controller="Functionality" asp-action="RedactText" asp-route-id="@Model.Texts[i].Id" asp-route-title=@Model.Texts[i].Title asp-route-text=@Model.Texts[i].Text>Redact</a>
+                <a id="btt" type="button" class="btn btn-danger col-3"  asp-area="" asp-controller="Functionality" asp-action="DeleteText" asp-route-id="@Model.Texts[i].Id">Delete</a>
+            </div>
+        </div>
+    }
+}
+
+<script src="~/js/myTexts.js">
+
+</script>
+

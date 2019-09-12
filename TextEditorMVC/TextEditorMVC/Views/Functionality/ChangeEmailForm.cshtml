@@ -1,0 +1,28 @@
+﻿@model TextEditorMVC.Models.ChangeForEmail
+@{
+    ViewData["Title"] = "ChangeEmailForm";
+}
+<div id="A"><h2>Change your email</h2></div>
+<form asp-controller="Functionality" id="ChangeEmailForm" style="background-color:White" asp-action="ChangeEmail">
+    <fieldset>
+        <div class="form-group">
+            <label asp-for="NewEmail" class="control-label">New Email</label>
+            <input class="form-control" asp-for=NewEmail placeholder="Enter new email" />
+            <span asp-validation-for="NewEmail" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password" class="control-label">Password</label>
+            <input class="form-control" asp-for=Password />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </fieldset>
+    <div class="col-md-12 text-center ">
+        <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Save</button>
+    </div>
+</form>
+<script src="~/js/myProfile.js">
+
+</script>
+
+

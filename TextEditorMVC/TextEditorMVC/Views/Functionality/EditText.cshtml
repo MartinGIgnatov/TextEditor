@@ -1,0 +1,50 @@
+﻿@model TextEditorMVC.Models.TextForView
+@{
+    ViewData["Title"] = "EditText";
+}
+
+
+
+<div class="container">
+
+    <form asp-controller="Functionality" asp-action="SaveAndRedact" method="post">
+        <div class="row">
+            <input asp-for="Id" name="Id" hidden value=@Model.Id>
+            <div id="ShowTextElementsdistance">
+                <div class="">
+                    <input type="text" asp-for="Title" name="Title" id="TextShowContaners" class="form18" required value="@Model.Title" placeholder="Enter text's title" style="font-size:200%;">
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <fieldset>
+                <div id="ShowTextElementsdistance">
+                    <div class="md-form amber-textarea active-amber-textarea-2">
+                        <textarea asp-for="Text" name="Text" id="TextShowContaners" class="md-textarea form-control" placeholder="Enter text's body" rows="25" style="font-size:120%; resize: none;">
+@if(Model!=null && Model.Text != null)
+{
+@Model.Text
+}
+                    </textarea>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-2">
+                <button type="submit" class=" btn btn-block mybtn btn-danger tx-tfm">Save and Redact</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script src="~/js/myTexts.js">
+
+</script>

@@ -1,0 +1,109 @@
+﻿@model TextEditorMVC.Models.TextForView
+@{
+    ViewData["Title"] = "RedactText";
+}
+@*@section Scripts
+    {
+        <script type="text/javascript" runat="server" src="../wwwroot/js/RedactText.js"></script>
+    }*@
+
+<div class="container">
+    <div class="row">
+        <div class="col col-sm-8">
+            <div id="ShowTextElementsdistance">
+                <div class="">
+                    <input readonly type="text" id="TextShowContaners" class="form18" required value="@Model.Title" placeholder="Enter text's title" style="font-size:200%;">
+                </div>
+
+            </div>
+
+
+            <!--Textarea with icon prefix-->
+            <div id="ShowTextElementsdistance">
+                <div class="md-form amber-textarea active-amber-textarea-2">
+                    <div class="panel panel-default" id="panelWords" style="padding:0; margin:0; border-radius:0; background-color:transparent;">
+                        @if (Model != null && Model.Text != null)
+                        {
+                            @if (Model.ErrorPositions.Count == 0)
+                            {
+                                @Model.Text
+                            }
+                            else
+                            {
+                                @for (int i = 0; i < Model.ErrorPositions.Count; i++)
+                                {
+                                    if (i == 0)
+                                    {
+                                        @if (Model.WordPositions[Model.ErrorPositions[i]].StartIndex - 1 >= 0)
+                                        {
+                                            @Model.Text.Substring(0, Model.WordPositions[Model.ErrorPositions[i]].StartIndex)
+                                        }
+                                    }
+                                    else
+                                    {
+                                        @Model.Text.Substring(Model.WordPositions[Model.ErrorPositions[i - 1]].EndIndex + 1, Model.WordPositions[Model.ErrorPositions[i]].StartIndex - Model.WordPositions[Model.ErrorPositions[i - 1]].EndIndex - 1)
+                                    }
+                                    <div id="@i,InText" style="display: inline">
+                                        @Model.Text.Substring(Model.WordPositions[Model.ErrorPositions[i]].StartIndex, Model.WordPositions[Model.ErrorPositions[i]].EndIndex - Model.WordPositions[Model.ErrorPositions[i]].StartIndex + 1)
+                                    </div>
+                                    if (i == Model.ErrorPositions.Count - 1 && Model.WordPositions[Model.ErrorPositions[i]].EndIndex + 1 < Model.Text.Length)
+                                    {
+                                        @Model.Text.Substring(Model.WordPositions[Model.ErrorPositions[i]].EndIndex + 1, Model.Text.Length - Model.WordPositions[Model.ErrorPositions[i]].EndIndex - 1)
+                                    }
+                                }
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col col-sm-4">
+
+            @for (int i = 0; i < Model.ErrorPositions.Count; i++)
+            {
+                <div class="panel panel-default" id="panelWords" onmouseover="OnHoverUnderline('@i,InText')" onmouseout="OutHoverReUnderline('@i,InText')" style="padding:0; margin:0; border-radius:0;">
+                    <div class="card" style="padding:0; margin:0;">
+                        <div class="card-header" id="headingTwo" style="margin:0; padding:0">
+
+                            <button class="btn btn-link collapsed" itype="button" data-toggle="collapse" data-target="#@i" aria-expanded="false" aria-controls="collapseTwo" style="padding:0; margin:0; width:100% ; background-color:transparent; border:hidden;">
+                                <div class="panel-footer" id="panelWord" style="float:left; background-color:transparent; border:hidden; color: black;">@Model.Text.Substring(Model.WordPositions[Model.ErrorPositions[i]].StartIndex, Model.WordPositions[Model.ErrorPositions[i]].EndIndex - Model.WordPositions[Model.ErrorPositions[i]].StartIndex + 1)</div>
+                            </button>
+
+                        </div>
+                        <div class="panel-body" style="padding:0">
+
+                            <div id="@i" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div class="card-body" style="padding:2%">
+
+                                    @for (int k = 0; k < Model.FixPropositions[i].Count; k++)
+                                    {
+                                        <div>
+                                            <a asp-area="" asp-controller="Functionality" asp-action="ChangeWord" asp-route-id="@Model.Id" asp-route-title=@Model.Title asp-route-text=@Model.Text
+                                               asp-route-erorWordIndex=@i asp-route-propositionIndex=@k style="text-decoration: none !important;">
+                                                @Model.FixPropositions[i][k]
+                                            </a>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    function OnHoverUnderline(id) {
+        document.getElementById(id).style.backgroundColor = "#ff6666";
+    }
+
+    function OutHoverReUnderline(id) {
+        document.getElementById(id).style.backgroundColor = "transparent";
+    }
+</script>
+<script src="~/js/myTexts.js">
+
+</script>

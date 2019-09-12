@@ -1,0 +1,100 @@
+﻿@model TextEditorMVC.Models.DictionaryForView
+@{
+    ViewData["Title"] = "Dictionary";
+}
+
+<div class="container">
+    <div class="row">
+
+        <h2>Dictionary</h2>
+        <form asp-action="Dictionary" asp-controller="Functionality" class="form-inline">
+
+
+            <div class="col col-lg-10" style="padding:0">
+                <input class="form-control" id="form23" name="SearchWord" asp-for="@Model.SearchWord" rows="1" style="background-color:transparent; width:100%;">
+            </div>
+            <div class="col col-lg-2">
+                <button id="bt" type="submit" class="btn btn-danger">Search</button>
+            </div>
+
+        </form>
+    </div>
+    <div class="row">
+        @if (Model != null && Model.wordPropositions != null && Model.wordPropositions.Count != 0)
+        {
+            @if (Model.wordPropositions[0].Length == 0)
+            {
+                <h3>Your word</h3>
+                <div class="panel panel-default">
+                    <div class="panel-footer">@Model.wordPropositions[0].ProposedWord</div>
+                    <div class="panel-body" style="padding:0">
+                        <div class="card-body" style="padding:2%">
+
+                            @for (int i = 0; i < Model.wordPropositions[0].Descriptions.Count; i++)
+                            {
+                                <div>@(i + 1). @Model.wordPropositions[0].Descriptions[i]</div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <h3>Did you mean?</h3>
+                @for (int i = 1; i < Model.wordPropositions.Count; i++)
+                {
+                    <div class="panel panel-default" style="padding:0; margin:0; border-radius:0;">
+                        <div class="card" style="padding:0; margin:0;">
+                            <div class="card-header" id="headingTwo" style="margin:0; padding:0">
+
+                                <button class="btn btn-link collapsed" itype="button" data-toggle="collapse" data-target="#@i" aria-expanded="false" aria-controls="collapseTwo" style="padding:0; margin:0; width:100% ; background-color:transparent; border:hidden;">
+                                    <div class="panel-footer" id="panelWord" style="float:left; background-color:transparent; border:hidden; color: black;">@Model.wordPropositions[i].ProposedWord</div>
+                                </button>
+
+                            </div>
+                            <div class="panel-body" style="padding:0">
+                                <div id="@i" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <div class="card-body" style="padding:2%">
+
+                                        @for (int k = 0; k < Model.wordPropositions[i].Descriptions.Count; k++)
+                                        {
+                                            <div>@(k + 1). @Model.wordPropositions[i].Descriptions[k]</div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <h3>Did you mean?</h3>
+                @for (int i = 0; i < Model.wordPropositions.Count; i++)
+                {
+                    <div class="panel panel-default" style="padding:0; margin:0; border-radius:0;">
+                        <div class="card" style="padding:0; margin:0;">
+                            <div class="card-header" id="headingTwo" style="margin:0; padding:0">
+
+                                <button class="btn btn-link collapsed" itype="button" data-toggle="collapse" data-target="#@i" aria-expanded="false" aria-controls="collapseTwo" style="padding:0; margin:0; width:100% ; background-color:transparent; border:hidden;">
+                                    <div class="panel-footer" id="panelWord" style="float:left; background-color:transparent; border:hidden; color: black;">@Model.wordPropositions[i].ProposedWord</div>
+                                </button>
+
+                            </div>
+                            <div class="panel-body" style="padding:0">
+                                <div id="@i" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <div class="card-body" style="padding:2%">
+
+                                        @for (int k = 0; k < Model.wordPropositions[i].Descriptions.Count; k++)
+                                        {
+                                            <div>@(k + 1). @Model.wordPropositions[i].Descriptions[k]</div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+
+    </div>
+</div>
+

@@ -1,0 +1,31 @@
+﻿@model TextEditorMVC.Models.ChangeForName
+@{
+    ViewData["Title"] = "ChangeNameForm";
+}
+<div id="A"><h2>Change your name</h2></div>
+<form asp-controller="Functionality" id="ChangeNameForm" style="background-color:White" asp-action="ChangeName">
+
+    <fieldset>
+        <div class="form-group">
+            <label asp-for="NewName" class="control-label">New Name</label>
+            <input class="form-control" asp-for=NewName placeholder="Enter new name" />
+            <span asp-validation-for="NewName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password" class="control-label">Password</label>
+            <input class="form-control" asp-for=Password />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </fieldset>
+    <div class="col-md-12 text-center ">
+        <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Save</button>
+    </div>
+</form>
+<script src="~/js/myProfile.js">
+
+</script>
+
+
+
+

@@ -1,0 +1,241 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.textPanel {
+    width: 185px;
+    height: 230px;
+    border-radius:10px;
+    position: relative;
+    float: left;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+    background-color: white;
+    margin: 40px 0 0 40px;
+}
+
+#buttonGroupId {
+    position: absolute;
+    bottom: 0;
+    margin: auto;
+}
+
+    .textPanel:hover {
+        box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 40px 0 rgba(0, 0, 0, 0.19);
+    }
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+#idBody {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: linear-gradient(to right top, #ff918c, #ffa1b4, #fbb4d5, #f2c9ed, #ebdcfa, #ece5fd, #efedff, #f4f5ff, #f7f7ff, #fafaff, #fdfcff, #ffffff);
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+#rightBorder {
+    border-right: 1px solid #ffffff;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+
+.navbar {
+}
+
+
+/*#daaaa{
+    padding-left:70%;
+}*/
+
+/*#dd{
+    background-color:firebrick;
+}*/
+
+#LoginForm {
+    width: 55%;
+    margin: auto;
+    margin-top: 40px;
+    border: solid;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+#RegisterForm {
+    width: 55%;
+    margin: auto;
+    margin-top: 40px;
+    border: solid;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+
+#ChangeNameForm {
+    width: 55%;
+    margin: auto;
+    margin-top: 40px;
+    border: solid;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+
+#ChangeEmailForm {
+    width: 55%;
+    margin: auto;
+    margin-top: 40px;
+    border: solid;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+
+#ChangePasswordForm {
+    width: 55%;
+    margin: auto;
+    margin-top: 40px;
+    border: solid;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+
+#ChangeUsernameForm {
+    width: 55%;
+    margin: auto;
+    margin-top: 40px;
+    border: solid;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+
+#logo {
+    margin: auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.shadow-textarea textarea.form-control::placeholder {
+    font-weight: 300;
+}
+
+.shadow-textarea textarea.form-control {
+    padding-left: 0.8rem;
+}
+
+#Profile {
+    margin: auto;
+    margin-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+   
+#titl {
+    margin: auto;
+    text-align: center;
+}
+
+#b {
+    float: right;
+}
+
+#A {
+    text-align: center;
+}
+
+#bt{
+    background-color: hotpink;
+}
+
+.form-control {
+    display: inline;
+}
+
+#form23{
+}
+
+.card-body {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+
+#bt{
+    background-color: hotpink;
+}
+
+#ShowTextElementsdistance {
+    padding-top: 40px;
+}
+
+#TextShowContaners {
+    width:100%;
+    border: none;
+    border-bottom: solid;
+    border-left: solid;
+    border-color: mediumseagreen;
+    border-width: 1px;
+    border-bottom-left-radius: 4px;
+    background-color: transparent;
+}
+
+#TextShowContaners :focus{
+    outline:none;
+    border:none;
+}
+
+#Newb {
+    background-color: white;
+    width: 100%;
+    height: 230px;
+    border: none;
+    border-radius: 10px;
+    color:black;
+}
